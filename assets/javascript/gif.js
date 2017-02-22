@@ -30,10 +30,14 @@ function displayGifs(event) {
 		    	
 		    	// ======================================================
 		    	//created img element and stored an image tag;
-		    	var gifImage= $("<img class='thumbnail gif'>");
+		    	var gifImage= $("<img class='gif'>");
 
 		    	//setting the gifImage src attr to images from data object
-		    	gifImage.attr("src", results[i].images.fixed_height.url);
+		    	gifImage.attr("src", results[i].images.original_still.url);
+		    	//animation attr added to each gif
+		    	gifImage.attr("data-still", results[i].images.original_still.url);
+		    	gifImage.attr("data-animate", results[i].images.downsized_large.url);
+		    	gifImage.attr("data-state", "still");
 		    	gifImage.attr("alt", "funny gifs");
 
 		    	//append p and gifImage to gifDiv
@@ -68,8 +72,20 @@ function addGifTopics() {
 		}
 }
 
+//function called when img .gif clicked to animate gif, default is still
 function animate() {
+	var images = $("img");
+	var state = images.attr("data-state");
+	var still = images.attr("data-still");
+	var animate = images.attr("data-animate");
 
+	if(state === "state"){
+        images.attr("src", animate);
+      } 
+      else {
+        images.attr("src", animate);
+        state = still;
+      }
 };
 
 //Event onclick handlers for functions above
@@ -86,9 +102,9 @@ $("#addTopic").on("click", function(event) {
 $(document).on("click", ".gifTopic", displayGifs);
 
 //onClick Event to animate our gifs
-(".gif").on("click", function(){
+$(".gif").on("click", function(){
 	animate();
-})
+});
 
 //calling function to display initial buttons
 addGifTopics();
