@@ -1,0 +1,9 @@
+body {
+	background: #eee;
+}
+.gifTopic{
+    text-transform:capitalize;
+}
+button {
+	margin: 10px;
+}
