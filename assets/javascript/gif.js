@@ -1,6 +1,6 @@
 //Global variables
 //============================================================================================
-var arrTopics = ["charles barkley", "michael jordan"];
+var arrTopics = ["bruce the shark", "Bob Parr (Mr. Incredible)", "wall-e", "dory", "anton ego", "daisy duck", "mike wazowski", "edna mode", " Buzz Lightyear", "Dug the Dog", "Woody", "James P. 'Sulley' Sullivan"];
 
 //Functions
 //============================================================================================
@@ -14,7 +14,8 @@ function displayGifs(event) {
 
 	//variables to pass into ajax function
 	var queryTopics = $(this).attr("data-name");
-	var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + queryTopics + "&api_key=dc6zaTOxFJmzC&limit=10";
+	var rating = "pg";
+	var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + queryTopics + "&api_key=dc6zaTOxFJmzC&limit=10" + "&rating=" + rating;
 
 	$.ajax({
 		url: queryURL,
@@ -26,8 +27,8 @@ function displayGifs(event) {
 	    	for (var i = 0; i < results.length; i++) {
 		    	//creating a div to hold our gifs
 		    	var gifDiv = $("<div class='col-xs-3 col-md-3'>");
-		    	//created a paragraph element to hold rating
-		    	var p = $("<p>").text("Rating: " + results[i].rating);
+		    	//created a paragraph element to hold rating, and capitalizes rating
+		    	var p = $("<p>").text("Rating: " + results[i].rating.toUpperCase());
 		    	
 		    	// ======================================================
 		    	//created img element and stored an image tag;
