@@ -15,7 +15,7 @@ function displayGifs(event) {
 	//variables to pass into ajax function
 	var queryTopics = $(this).attr("data-name");
 	var rating = "pg";
-	var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + queryTopics + "&api_key=dc6zaTOxFJmzC&limit=10" + "&rating=" + rating;
+	var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + queryTopics + "&api_key=dc6zaTOxFJmzC&limit=10" + "&rating=" + rating;
 
 	$.ajax({
 		url: queryURL,
