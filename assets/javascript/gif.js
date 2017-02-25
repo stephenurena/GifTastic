@@ -94,10 +94,19 @@ function animate() {
 
 //onClick event to add/append new btns
 $("#addTopic").on("click", function(event) {
+	if (!$("#addInput").val()){
+		var warningDiv = $("<p>");
+		warningDiv.text("Please enter a Pixar Character");
+		warningDiv.attr("id", "warningP");
+		$("#inputBox").append(warningDiv);
+		console.log("enter a value");
+	} else {
+	$("#warningP").hide();
 	event.preventDefault();
 	var string = $("#addInput").val();
 	arrTopics.push(string);console.log(arrTopics);
 	addGifTopics();
+}
 });
 
 //onClick Event to all elements with a class of "gifTopic"
